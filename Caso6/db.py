@@ -1,5 +1,6 @@
 import pandas as pd
 
+
 class DB:
     def __init__(self, path_data):
         self._df_car = pd.read_csv(path_data, sep='\t')

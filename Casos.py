@@ -32,6 +32,7 @@ def Caso3(path_data):
         total_distance.update({matricula: distance})
     return total_distance
 
+
 # --------------------------------------------------------
 
 
@@ -55,7 +56,7 @@ def Caso4(path_data):
         distance = total_distance_car.get(matricula, 0)
         last_point = last_point_car.get(matricula)
         if last_point is not None:
-            distance += abs(_distanceJeo(last_point[0], last_point[1], lat, lon))
+            distance += abs(_distanceJeo(last_point[0], last_point[1], lat, lon))*1000 # 1 km == 1000 m
 
         last_point = (lat, lon)
 
@@ -69,11 +70,9 @@ def _distanceJeo(lat1, lon1, lat2, lon2):
 
     d_lat = lat2 - lat1
     d_lon = lon2 - lon1
-    a = math.sqrt(math.sin(d_lat / 2) ** 2) + math.cos(lat1) * math.cos(lat2) * (math.sin(d_lon / 2) ** 2)
-    c = 2 * math.asin(a)
 
-    # a = math.sin(d_lat / 2)**2 + math.cos(lat1) * math.cos(lat2) * math.sin(d_lon / 2)**2
-    # c = 2 * math.asin(math.sqrt(a))
+    a = math.sin(d_lat / 2) ** 2 + math.cos(lat1) * math.cos(lat2) * math.sin(d_lon / 2) ** 2
+    c = 2 * math.asin(math.sqrt(a))
 
     radio_earth_km = 6371
 

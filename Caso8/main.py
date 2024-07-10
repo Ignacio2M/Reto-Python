@@ -10,10 +10,6 @@ cars_collection = db.get_collection("updates")
 
 app = FastAPI()
 
-@app.get("/")
-async def read_root():
-    return {"Hello": "World"}
-
 
 @app.get("/{matricula}")
 async def read_matricula(matricula: str):
@@ -25,10 +21,11 @@ async def read_matricula(matricula: str):
 
     return data['Pos_date']
 
+
 @app.get("/healthcheck/")
 async def healthcheck():
     return await client.admin.command('ping')
 
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0")
+    uvicorn.run(app)
